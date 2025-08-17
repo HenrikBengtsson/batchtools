@@ -78,7 +78,7 @@ updateRegistry = function(reg = getDefaultRegistry()) { # nocov start
         uri = getProblemURI(reg, id)
         p = readRDS(uri)
         p$cache = FALSE
-        saveRDS(p, file = uri, version = 2L)
+        writeRDS(p, file = uri, compress = TRUE, wait = 0)
       }
     }
   }
@@ -99,7 +99,7 @@ updateRegistry = function(reg = getDefaultRegistry()) { # nocov start
         } else {
           if (hasName(x, "memory")) {
             setnames(x, "memory", "mem.used")
-            saveRDS(x, file = fn, version = 2L)
+            writeRDS(x, file = fn, compress = TRUE, wait = 0)
           }
         }
       })
