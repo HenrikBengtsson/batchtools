@@ -89,7 +89,7 @@ updateRegistry = function(reg = getDefaultRegistry()) { # nocov start
       setnames(reg$status, "memory", "mem.used")
     }
 
-    fns = list.files(dir(reg, "updates"), full.names = TRUE)
+    fns = list.files(dir(reg, "updates"), pattern = "\\.rds$", full.names = TRUE)
     if (length(fns) > 0L) {
       info("Renaming memory column in update files")
       updates = lapply(fns, function(fn) {
